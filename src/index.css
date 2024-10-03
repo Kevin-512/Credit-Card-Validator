@@ -10,3 +10,13 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+html {
+  @apply font-sans;
+}
+
+@layer utilities {
+  .padding {
+    @apply sm:px-16 px-8 sm:py-24 py-12;
+  }
+}

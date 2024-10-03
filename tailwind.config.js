@@ -23,7 +23,11 @@ export default {
         xl: "1200px",
       },
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Lato', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };

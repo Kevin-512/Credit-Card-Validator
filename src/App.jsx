@@ -2,15 +2,15 @@ import { Nav, Hero, CardGenerator, CardValidator } from "./sections";
 
 const App = () => {
   return (
-    <main className="container mx-auto">
+    <main>
       <Nav />
       <section>
         <Hero />
       </section>
-      <section>
+      <section className="padding">
         <CardGenerator />
       </section>
-      <section>
+      <section className="padding">
         <CardValidator />
       </section>
     </main>
