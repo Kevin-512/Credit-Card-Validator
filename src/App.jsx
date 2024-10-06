@@ -2,7 +2,7 @@ import { Nav, Hero, CardGenerator, CardValidator } from "./sections";
 
 const App = () => {
   return (
-    <main>
+    <main className=" bg-slate-200">
       <Nav />
       <section>
         <Hero />

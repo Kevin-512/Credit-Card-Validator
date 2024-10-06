@@ -25,7 +25,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Lato', 'sans-serif'],
+        sans: ['Oswald', 'sans-serif'],
       },
     },
   },

@@ -1,6 +1,9 @@
 const CardGenerator = () => {
   return (
-    <div>CardGenerator</div>
+    <section
+      id="generator"
+      className="flex flex-col container bg-red-50"
+    >Card Generator</section>
   )
 }
 
