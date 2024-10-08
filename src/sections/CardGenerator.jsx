@@ -33,8 +33,6 @@ const CardGenerator = () => {
     updateCardNumberWithDelay(cardNumber);
   };
 
-  
-
   return (
     <section id="generator" className="flex flex-col container gap-10">
       <h1 className="text-center text-8xl font-bold text-amber-600 underline">
