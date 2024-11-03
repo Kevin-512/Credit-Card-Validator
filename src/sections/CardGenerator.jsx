@@ -2,6 +2,7 @@ import Cards from "react-credit-cards-2";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
+import { FaRegCopy } from "react-icons/fa";
 
 const CardGenerator = () => {
   const [state, setState] = useState({
@@ -27,17 +28,31 @@ const CardGenerator = () => {
     }, 300);
   };
 
+  function generateRandomCardNumber() {
+    let cardNumber = "";
+    for (let i = 0; i < 4; i++) {
+      cardNumber += Math.floor(1000 + Math.random() * 9000).toString();
+    }
+    return cardNumber;
+  }
+
   const handleStartTyping = () => {
-    const cardNumber = "1234 5678 9012 3456";
+    const cardNumber = generateRandomCardNumber();
     setState((prevState) => ({ ...prevState, number: "" }));
     updateCardNumberWithDelay(cardNumber);
   };
+
+  const handleCopy = () => {
+    console.log(state.number);
+    navigator.clipboard.writeText(state.number);
+  }
 
   return (
     <section id="generator" className="flex flex-col container gap-10">
       <h1 className="text-center text-8xl font-bold text-amber-600 underline">
         <span className="z-10">Card Number Generator</span>
       </h1>
+      <p className="text-center text-2xl">Generate a random string of 16 numbers</p>
       <div className="scale-110 transform">
         <Cards
           cvc={state.cvc}
@@ -47,9 +62,12 @@ const CardGenerator = () => {
           number={state.number}
         />
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center gap-4">
         <Button className="text-2xl" onClick={handleStartTyping}>
           Generate
+        </Button>
+        <Button className="text-2xl" onClick={handleCopy} disabled={!state.number}>
+          <FaRegCopy/>
         </Button>
       </div>
     </section>

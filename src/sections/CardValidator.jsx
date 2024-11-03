@@ -17,8 +17,10 @@ const CardValidator = () => {
   });
 
   const [creditCheck, setcreditCheck] = useState(null);
+  const [animationKey, setAnimationKey] = useState(0);
 
   const handleCheckValid = () => {
+    setAnimationKey((prevKey) => prevKey + 1);
     let check = state.number;
     check = check.replace(/\s|-/g, "");
 
@@ -44,11 +46,15 @@ const CardValidator = () => {
   };
 
   const handleChange = (e) => {
-    const { value } = e.target;
+    let value = e.target.value;
 
-    if (/^\d*$/.test(value) && value.length <= 16) {
-      setState({ ...state, number: value });
+    value = value.replace(/\D/g, "");
+
+    if (value.length > 16) {
+      value = value.slice(0, 16);
     }
+
+    setState({ ...state, number: value });
   };
 
   return (
@@ -56,6 +62,12 @@ const CardValidator = () => {
       <h1 className="text-center text-8xl font-bold text-amber-600 underline">
         <span className="z-10">Card Validator</span>
       </h1>
+      <p className="text-center text-2xl">
+        Input a string of 16 numbers to validate its correctness
+        <br />
+        <br />
+        Validation using Luhn's Algorithm
+      </p>
       <div className="scale-110 transform">
         <Cards
           cvc={state.cvc}
@@ -78,10 +90,20 @@ const CardValidator = () => {
           Check
         </Button>
         {creditCheck == true && (
-          <Lottie className="w-20" animationData={Correct} loop={false} />
+          <Lottie
+            key={animationKey}
+            className="w-20"
+            animationData={Correct}
+            loop={false}
+          />
         )}
         {creditCheck == false && (
-          <Lottie className="w-20" animationData={Incorrect} loop={false} />
+          <Lottie
+            key={animationKey}
+            className="w-20"
+            animationData={Incorrect}
+            loop={false}
+          />
         )}
       </div>
     </section>
